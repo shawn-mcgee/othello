@@ -237,7 +237,7 @@ function App() {
           <span>
             Room {roomId} / Turn {board.turn + 1} / Playing as {me === 0 && "⚫"}{me === 1 && "⚪"} 
           </span>
-          <div className="grid grid-cols-8 border border-primary">
+          <div className="grid grid-cols-8 border border-primary bg-black/15">
             {board.grid.map((cell, i) => {
               switch (cell) {
                 case 0 : return <span key={i} className="w-10 h-10 flex justify-center items-center border border-primary cursor-not-allowed">⚫</span>
@@ -252,7 +252,7 @@ function App() {
               }
             })}
           </div>
-          <div className="flex border border-primary rounded-full overflow-hidden bg-black/10">
+          <div className="flex border border-primary rounded-full overflow-hidden bg-black/15">
             <span className="h-4 bg-black" style={{
               width: `${Board.count(board, 0) / (Board.count(board, 0) + Board.count(board, 1)) * 100}%`,
             }}></span>
