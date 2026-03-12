@@ -198,7 +198,7 @@ function App() {
   useEffect(() => {
     if (!room) return
 
-    room.onPeerJoin((peer) => {
+    room.onPeerJoin(() => {
       if (board.turn === -1) 
         setBoard((board) => ({...board, turn: 0}))
     })
