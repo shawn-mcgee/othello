@@ -240,8 +240,8 @@ function App() {
           <div className="grid grid-cols-8 border border-primary shadow-[10px_10px_0px_rgba(0,0,0,1)]">
             {board.grid.map((cell, i) => {
               switch (cell) {
-                case 0 : return <span key={i} className="w-10 h-10 flex justify-center items-center border border-primary cursor-not-allowed text-shadow-sm">⚫</span>
-                case 1 : return <span key={i} className="w-10 h-10 flex justify-center items-center border border-primary cursor-not-allowed text-shadow-sm">⚪</span>
+                case 0 : return <span key={i} className="w-10 h-10 flex justify-center items-center border border-primary cursor-not-allowed text-shadow-lg">⚫</span>
+                case 1 : return <span key={i} className="w-10 h-10 flex justify-center items-center border border-primary cursor-not-allowed text-shadow-lg">⚪</span>
                 default: return <span key={i} className="w-10 h-10 flex justify-center items-center border border-primary cursor-pointer hover:bg-primary/15" onClick={() => {
                   if (!sendMove) return
 
