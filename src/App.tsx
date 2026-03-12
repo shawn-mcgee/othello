@@ -30,7 +30,7 @@ const Board = {
   },
 
   play(board: Board, {who, row, col}: Move): Board {
-    if ((board.turn & 1) !== who      )             return board
+    if ((board.turn % 2) !== who      )             return board
     if (row < 0 || row >= Board.HEIGHT)             return board
     if (col < 0 || col >= Board.WIDTH )             return board
     if (board.grid[row * Board.WIDTH + col] !== -1) return board
@@ -262,7 +262,7 @@ function App() {
             }}></span>
           </div>
           <span>
-            {(board.turn & 1) === 0 && "It is ⚫'s turn"}{(board.turn & 1) === 1 && "It is ⚪'s turn"} {Board.count(board, 0) > Board.count(board, 1) && "/ ⚫ is winning"}{ Board.count(board, 1) > Board.count(board, 0) && "/ ⚪ is winning"}
+            {(board.turn % 2) === 0 && "It is ⚫'s turn"}{(board.turn % 2) === 1 && "It is ⚪'s turn"} {Board.count(board, 0) > Board.count(board, 1) && "/ ⚫ is winning"}{ Board.count(board, 1) > Board.count(board, 0) && "/ ⚪ is winning"}
           </span>
         </div>
       )}
