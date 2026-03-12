@@ -237,11 +237,11 @@ function App() {
           <span>
             Room {roomId} / Turn {board.turn + 1} / Playing as {me === 0 && "⚫"}{me === 1 && "⚪"} 
           </span>
-          <div className="grid grid-cols-8 border border-primary bg-black/15">
+          <div className="grid grid-cols-8 border border-primary shadow-[10px_10px_0px_rgba(0,0,0,1)]">
             {board.grid.map((cell, i) => {
               switch (cell) {
-                case 0 : return <span key={i} className="w-10 h-10 flex justify-center items-center border border-primary cursor-not-allowed">⚫</span>
-                case 1 : return <span key={i} className="w-10 h-10 flex justify-center items-center border border-primary cursor-not-allowed">⚪</span>
+                case 0 : return <span key={i} className="w-10 h-10 flex justify-center items-center border border-primary cursor-not-allowed text-shadow-sm">⚫</span>
+                case 1 : return <span key={i} className="w-10 h-10 flex justify-center items-center border border-primary cursor-not-allowed text-shadow-sm">⚪</span>
                 default: return <span key={i} className="w-10 h-10 flex justify-center items-center border border-primary cursor-pointer hover:bg-primary/15" onClick={() => {
                   if (!sendMove) return
 
@@ -252,11 +252,10 @@ function App() {
               }
             })}
           </div>
-          <div className="flex border border-primary rounded-full overflow-hidden bg-black/15">
+          <div className="flex border border-primary rounded-full overflow-hidden mt-3">
             <span className="h-4 bg-black" style={{
               width: `${Board.count(board, 0) / (Board.count(board, 0) + Board.count(board, 1)) * 100}%`,
             }}></span>
-            {/* <span className="h-4 grow bg-[repeating-linear-gradient(45deg,black,black_20px,transparent_20px,transparent_40px)]"></span> */}
             <span className="h-4 bg-white" style={{
               width: `${Board.count(board, 1) / (Board.count(board, 0) + Board.count(board, 1)) * 100}%`,
             }}></span>
