@@ -183,7 +183,7 @@ function App() {
   const [me, setMe] = useState(0)
 
   function host() {
-    const roomId = _.sampleSize("abcdefghijklmnopqrstuvwxyz0123456789", 8).join("")
+    const roomId = _.sampleSize("abcdefghijklmnopqrstuvwxyz0123456789", 6).join("")
 
     setMe(0)
     setRoomId(roomId)
