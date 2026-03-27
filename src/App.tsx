@@ -190,10 +190,28 @@ function App() {
     setRoom(Trystero.joinRoom({appId: "othello-where-art-thou"}, roomId))
   }
 
-  function join() {
+  function join(roomId: string) {
     setMe(1)
     setRoom(Trystero.joinRoom({appId: "othello-where-art-thou"}, roomId))
   }
+
+  useEffect(() => {
+    const p = new URLSearchParams(window.location.hash.substring(1))
+    const roomId = p.get("roomId")?.trim()?.toLowerCase()
+    if (roomId) {
+      setRoomId(roomId)
+      join(roomId)
+    }
+  }, [])
+
+  useEffect(() => {
+    const p = new URLSearchParams(window.location.hash.substring(1))
+    if (roomId.trim().toLowerCase())
+      p.set("roomId", roomId.trim().toLowerCase())
+    else
+      p.delete("roomId")
+    window.location.hash = p.toString()
+  }, [roomId])
 
   useEffect(() => {
     if (!room) return
@@ -226,7 +244,7 @@ function App() {
           <div className="flex gap-1">
             <button className="grow btn btn-primary" onClick={host}>Host</button>
             <input  className="input" type="text" placeholder="Room Id" value={roomId} onChange={(e) => setRoomId(e.target.value.trim().toLowerCase())} />
-            <button className="grow btn btn-primary" onClick={join}>Join</button>
+            <button className="grow btn btn-primary" onClick={() => join(roomId)}>Join</button>
           </div>
         </div>
       )}
